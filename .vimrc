@@ -137,7 +137,7 @@ Plug 'rhysd/github-complete.vim'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'https://github.com/fatih/vim-go.git'
 Plug 'https://github.com/fatih/molokai'
-
+Plug 'dgryski/vim-godef'
 
 call plug#end()            
 
@@ -188,10 +188,6 @@ let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
 
 " cpp-mode
 nnoremap <leader>y :CopyCode<cr>
@@ -466,7 +462,10 @@ set si "Smart indent
 set wrap "Wrap lines
 
 
-
+set mouse=n
+set mouse=i
+" 解决go代码不能跳转问题
+let g:go_def_mode = 'godef'
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
