@@ -258,6 +258,10 @@ nnoremap <silent> <leader>n :NERDTreeToggle<cr>
 set tags+=/usr/include/tags
 set tags+=~/.vim/systags
 set tags+=~/.vim/x86_64-linux-gnu-systags
+
+set tags=tags;
+set autochdir
+
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.','re![_a-zA-z0-9]'],
@@ -432,8 +436,6 @@ nmap <leader>w :w!<cr>
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
