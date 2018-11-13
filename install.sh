@@ -34,33 +34,33 @@ function is_ubuntu1604()
 # 在ubuntu上源代码安装vim
 function compile_vim_on_ubuntu()
 {
-    sudo apt-get remove -y vim vim-runtime gvim
-    sudo apt-get remove -y vim-tiny vim-common vim-gui-common vim-nox
-    sudo rm -rf /usr/bin/vim*
-    sudo rm -rf /usr/local/bin/vim*
-    sudo rm -rf /usr/share/vim/vim*
-    sudo rm -rf /usr/local/share/vim/vim*
-    rm -rf ~/vim
+    # sudo apt-get remove -y vim vim-runtime gvim
+    # sudo apt-get remove -y vim-tiny vim-common vim-gui-common vim-nox
+    # sudo rm -rf /usr/bin/vim*
+    # sudo rm -rf /usr/local/bin/vim*
+    # sudo rm -rf /usr/share/vim/vim*
+    # sudo rm -rf /usr/local/share/vim/vim*
+    # rm -rf ~/vim
 
-    sudo apt-get install -y libncurses5-dev libgnome2-dev libgnomeui-dev \
-        libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-        libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev python3-dev ruby-dev lua5.1 lua5.1-dev
+    # sudo apt-get install -y libncurses5-dev libgnome2-dev libgnomeui-dev \
+    #     libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+    #     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev python3-dev ruby-dev lua5.1 lua5.1-dev
 
-    git clone https://github.com/vim/vim.git ~/vim
-    cd ~/vim
-    ./configure --with-features=huge \
-        --enable-multibyte \
-        --enable-rubyinterp \
-        --enable-pythoninterp \
-        --with-python-config-dir=/usr/lib/python2.7/config \
-        --enable-perlinterp \
-        --enable-luainterp \
-        --enable-gui=gtk2 \
-        --enable-cscope \
-        --prefix=/usr
-    make
-    sudo make install
-    cd -
+    # git clone https://github.com/vim/vim.git ~/vim
+    # cd ~/vim
+    # ./configure --with-features=huge \
+    #     --enable-multibyte \
+    #     --enable-rubyinterp \
+    #     --enable-pythoninterp \
+    #     --with-python-config-dir=/usr/lib/python2.7/config \
+    #     --enable-perlinterp \
+    #     --enable-luainterp \
+    #     --enable-gui=gtk2 \
+    #     --enable-cscope \
+    #     --prefix=/usr
+    # make
+    # sudo make install
+    # cd -
 }
 
 # 在centos上源代码安装vim
