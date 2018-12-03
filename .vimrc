@@ -176,7 +176,8 @@ set background=dark
 " colorscheme solarized
 " colorscheme ChocolateLiquor
 " colorscheme molokai
-colorscheme zenburn
+" colorscheme zenburn
+colorscheme lodestone
 let g:onedark_termcolors=256
 if has("gui_running")
     colorscheme blue
@@ -458,7 +459,7 @@ fun! CleanExtraSpaces()
 endfun
 
 
-nmap <leader>w :w!<cr>
+nmap <leader>w :wall!<cr>
 
 
 set ai "Auto indent
