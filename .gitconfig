@@ -1,0 +1,20 @@
+[alias]
+	st = status
+	co = checkout
+	cm = commit
+	br = branch
+	cmm = commit -m
+    cmam = commit -a -m
+	pso = push origin
+	plo = pull origin  
+[user]
+	name = jiaoji1
+    email = jiaoji1@staff.sina.com.cn
+[color]
+    ui=true
+[credential]
+    helper = store
+[core]
+	pager = less -x1,5
+[url "ssh://git@git.intra.weibo.com:2222"]
+	insteadOf = http://git.intra.weibo.com

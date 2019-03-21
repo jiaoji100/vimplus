@@ -26,6 +26,7 @@ set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 
+set foldmethod=marker
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码缩进和排版
@@ -175,8 +176,8 @@ syntax enable
 set background=dark
 " colorscheme solarized
 " colorscheme ChocolateLiquor
-" colorscheme molokai
-colorscheme zenburn
+colorscheme molokai
+" colorscheme zenburn
 let g:onedark_termcolors=256
 if has("gui_running")
     colorscheme blue
