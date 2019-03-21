@@ -31,10 +31,6 @@ set foldmethod=marker
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码缩进和排版
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set autoindent           " 设置自动缩进
-" set cindent              " 设置使用C/C++语言的自动缩进方式
-" set cinoptions=g0,:0,N-s,(0    " 设置C/C++语言的具体缩进方式
-" set smartindent          " 智能的选择对其方式
 filetype indent on       " 自适应不同语言的智能缩进
 set expandtab            " 将制表符扩展为空格
 set tabstop=4            " 设置编辑时制表符占用空格数
@@ -96,7 +92,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-" Plug 'chxuan/cpp-mode'
+Plug 'chxuan/cpp-mode'
 Plug 'chxuan/vim-edit'
 Plug 'chxuan/change-colorscheme'
 Plug 'chxuan/prepare-code'
@@ -178,6 +174,8 @@ set background=dark
 " colorscheme ChocolateLiquor
 colorscheme molokai
 " colorscheme zenburn
+" colorscheme zenburn
+" colorscheme lodestone
 let g:onedark_termcolors=256
 if has("gui_running")
     colorscheme blue
@@ -459,7 +457,7 @@ fun! CleanExtraSpaces()
 endfun
 
 
-nmap <leader>w :w!<cr>
+nmap <leader>w :wall!<cr>
 
 
 set ai "Auto indent
@@ -472,27 +470,3 @@ set mouse=i
 " 解决go代码不能跳转问题
 let g:go_def_mode = 'godef'
 """"""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction

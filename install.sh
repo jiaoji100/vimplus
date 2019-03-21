@@ -61,7 +61,9 @@ function compile_vim_on_ubuntu()
     # make
     # sudo make install
     # cd -
+    echo ""
 }
+
 
 # 在centos上源代码安装vim
 function compile_vim_on_centos()
