@@ -7,6 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set pastetoggle=
 let mapleader = ","      " 定义<leader>键
 " let mapleader = "\<Space>"      " 定义<leader>键
 set nocompatible         " 设置不兼容原始vi模式
@@ -26,11 +27,13 @@ set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 
+set foldmethod=marker
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码缩进和排版
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype indent on       " 自适应不同语言的智能缩进
+" filetype indent on       " 自适应不同语言的智能缩进
+filetype indent off       " 自适应不同语言的智能缩进
 set expandtab            " 将制表符扩展为空格
 set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
@@ -175,6 +178,8 @@ set background=dark
 " colorscheme zenburn
 " colorscheme lodestone
 colorscheme dracula
+" colorscheme zenburn
+" colorscheme lodestone
 let g:onedark_termcolors=256
 if has("gui_running")
     colorscheme blue

@@ -107,6 +107,14 @@ function install_prepare_software_on_mac()
     brew install vim gcc cmake ctags-exuberant curl ack
 }
 
+function init_centos_conf()
+{
+    mv .bashrc ~
+    mv .bash_profile ~
+    mv .gitconfig ~
+    mv .git-credentials ~
+    source ~/.bashrc
+}
 # 安装centos发行版必要软件
 function install_prepare_software_on_centos()
 {
@@ -251,6 +259,7 @@ function install_vimplus_on_ubuntu()
 # 在centos发行版安装vimplus
 function install_vimplus_on_centos()
 {
+    init_centos_conf
     install_prepare_software_on_centos
     begin_install_vimplus
 }
