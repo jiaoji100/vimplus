@@ -109,10 +109,10 @@ function install_prepare_software_on_mac()
 
 function init_centos_conf()
 {
-    mv .bashrc ~
-    mv .bash_profile ~
-    mv .gitconfig ~
-    mv .git-credentials ~
+    cp -r .bashrc ~
+    cp -r .bash_profile ~
+    cp -r .gitconfig ~
+    cp -r .git-credentials ~
     source ~/.bashrc
 }
 # 安装centos发行版必要软件
