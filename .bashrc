@@ -37,6 +37,5 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export PS1='[\[\033[01;32m\]\u:\[\033[01;34m\]\W\[\033[00m\]]\$ '
 #export PS1='\[\033[01;34m\]\u@10.75.29.40\[\033[01;34m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-IP=`ifconfig|grep  eth0|grep inet|awk '{print $2}'`
+IP=`ifconfig  eth0|grep inet|grep -v inet6|awk '{print $2}'`
 export PS1='\[\033[01;34m\]\u@$IP\[\033[01;34m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-fortune | boxes -d dog
