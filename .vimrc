@@ -122,7 +122,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'junegunn/vim-slash'
+Plug 'junegunn/vim-slash'
 Plug 'junegunn/gv.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
@@ -174,10 +174,10 @@ syntax enable
 set background=dark
 " colorscheme solarized
 " colorscheme ChocolateLiquor
-" colorscheme molokai
+colorscheme molokai
 " colorscheme zenburn
 " colorscheme lodestone
-colorscheme dracula
+" colorscheme dracula
 " colorscheme zenburn
 " colorscheme lodestone
 let g:onedark_termcolors=256
@@ -434,8 +434,6 @@ endfun
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F1> :wq<cr>
 map <F2> :q<cr>
-map K k
-map J j
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
