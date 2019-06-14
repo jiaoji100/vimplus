@@ -204,7 +204,7 @@ function compile_ycm_on_linux()
 function compile_ycm_on_mac()
 {
     cd ~/.vim/plugged/YouCompleteMe
-    ./install.py --clang-completer --system-libclang
+    ./install.py --clang-completer --go-completer --system-libclang
 }
 
 # 打印logo
