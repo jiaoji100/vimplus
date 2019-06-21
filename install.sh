@@ -197,7 +197,7 @@ function install_vim_plugin()
 function compile_ycm_on_linux()
 {
     cd ~/.vim/plugged/YouCompleteMe
-    ./install.py --clang-completer --go-completer --system-libclang
+    ./install.py --clang-completer --go-completer
 
 }
 
@@ -205,7 +205,7 @@ function compile_ycm_on_linux()
 function compile_ycm_on_mac()
 {
     cd ~/.vim/plugged/YouCompleteMe
-    ./install.py --clang-completer --go-completer --system-libclang
+    ./install.py --clang-completer --go-completer
 }
 
 # 打印logo
