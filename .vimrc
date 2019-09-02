@@ -7,9 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set pastetoggle=
 let mapleader = ","      " 定义<leader>键
-" let mapleader = "\<Space>"      " 定义<leader>键
 set nocompatible         " 设置不兼容原始vi模式
 filetype on              " 设置开启文件类型侦测
 filetype plugin on       " 设置加载对应文件类型的插件
@@ -27,13 +25,14 @@ set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 
-set foldmethod=marker
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码缩进和排版
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" filetype indent on       " 自适应不同语言的智能缩进
-filetype indent off       " 自适应不同语言的智能缩进
+set autoindent           " 设置自动缩进
+set cindent              " 设置使用C/C++语言的自动缩进方式
+set cinoptions=g0,:0,N-s,(0    " 设置C/C++语言的具体缩进方式
+set smartindent          " 智能的选择对其方式
+filetype indent on       " 自适应不同语言的智能缩进
 set expandtab            " 将制表符扩展为空格
 set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
@@ -138,7 +137,7 @@ Plug 'https://github.com/fatih/vim-go.git'
 Plug 'https://github.com/fatih/molokai'
 Plug 'dgryski/vim-godef'
 
-call plug#end()            
+call plug#end()
 
 " load vim default plugin
 runtime macros/matchit.vim
@@ -170,20 +169,10 @@ nnoremap <c-l> <c-w>l
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
 " 主题
-syntax enable
 set background=dark
-" colorscheme solarized
-" colorscheme ChocolateLiquor
 colorscheme molokai
-" colorscheme zenburn
-" colorscheme lodestone
-" colorscheme dracula
-" colorscheme zenburn
-" colorscheme lodestone
 let g:onedark_termcolors=256
-if has("gui_running")
-    colorscheme blue
-endif
+
 " airline
 let g:airline_theme="onedark"
 let g:airline_powerline_fonts = 1
@@ -191,6 +180,10 @@ let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 " cpp-mode
 nnoremap <leader>y :CopyCode<cr>
@@ -227,73 +220,35 @@ nnoremap <leader>r :ReplaceTo<space>
 
 " nerdtree
 nnoremap <silent> <leader>n :NERDTreeToggle<cr>
-" inoremap <silent> <leader>n <esc> :NERDTreeToggle<cr>
-" let g:NERDTreeFileExtensionHighlightFullName = 1
-" let g:NERDTreeExactMatchHighlightFullName = 1
-" let g:NERDTreePatternMatchHighlightFullName = 1
-" let g:NERDTreeHighlightFolders = 1         
-" let g:NERDTreeHighlightFoldersFullName = 1 
-" let g:NERDTreeDirArrowExpandable='▷'
-" let g:NERDTreeDirArrowCollapsible='▼' 
+inoremap <silent> <leader>n <esc> :NERDTreeToggle<cr>
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1         
+let g:NERDTreeHighlightFoldersFullName = 1 
+let g:NERDTreeDirArrowExpandable='▷'
+let g:NERDTreeDirArrowCollapsible='▼'
 
 
 " YCM
-let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0 
 let g:ycm_error_symbol = '✗'
-let g:ycm_warning_symbol = '✗'
+let g:ycm_warning_symbol = '✹'
 let g:ycm_seed_identifiers_with_syntax = 1 
 let g:ycm_complete_in_comments = 1 
 let g:ycm_complete_in_strings = 1 
-let g:ycm_server_python_interpreter = '/usr/bin/python'
-let g:ycm_python_binary_path = 'python'
+let g:ycm_server_python_interpreter = '/usr/bin/python2.7'
 nnoremap <leader>u :YcmCompleter GoToDeclaration<cr>
 " 已经使用cpp-mode插件提供的转到函数实现的功能
-nnoremap <leader>i :YcmCompleter GoToDefinition<cr> 
+" nnoremap <leader>i :YcmCompleter GoToDefinition<cr> 
 nnoremap <leader>o :YcmCompleter GoToInclude<cr>
 nnoremap <leader>ff :YcmCompleter FixIt<cr>
 nmap <F5> :YcmDiags<cr>
-
-" 寻找全局配置文件
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" 使用ctags生成的tags文件
-let g:ycm_collect_identifiers_from_tag_files = 1
-" 开启语义补全
-" 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
-"let g:ycm_key_invoke_completion = '<M-;>'
-" 设置转到定义处的快捷键为ALT+G，未测出效果
-"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
-"关键字补全
-let g:ycm_seed_identifiers_with_syntax = 1
-" 在接受补全后不分裂出一个窗口显示接受的项
-set completeopt-=preview
-" 让补全行为与一般的IDE一致
-set completeopt=longest,menu
-" 不显示开启vim时检查ycm_extra_conf文件的信息
-let g:ycm_confirm_extra_conf=0
-" 每次重新生成匹配项，禁止缓存匹配项
-let g:ycm_cache_omnifunc=0
-" 在注释中也可以补全
-let g:ycm_complete_in_comments=1
-" 输入第一个字符就开始补全
-let g:ycm_min_num_of_chars_for_completion=1
-" 错误标识符
-let g:ycm_error_symbol='>>'
-" 警告标识符
-let g:ycm_warning_symbol='>*'
-" 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
-let g:ycm_use_ultisnips_completer=0
-
-
 
 " ctags
 set tags+=/usr/include/tags
 set tags+=~/.vim/systags
 set tags+=~/.vim/x86_64-linux-gnu-systags
-
-set tags=tags;
-set autochdir
-
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.','re![_a-zA-z0-9]'],
@@ -362,15 +317,8 @@ imap <silent> <F8> <Plug>StopMarkdownPreview
 
 " vim-easymotion
 let g:EasyMotion_smartcase = 1
-let g:EasyMotion_smartcase = 1
-"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-map <Leader><leader>h <Plug>(easymotion-linebackward)
-map <Leader><Leader>j <Plug>(easymotion-j)
-map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><leader>l <Plug>(easymotion-lineforward)
-" 重复上一次操作, 类似repeat插件, 很强大
-map <Leader><leader>. <Plug>(easymotion-repeat)
-
+map <leader>w <Plug>(easymotion-bd-w)
+nmap <leader>w <Plug>(easymotion-overwin-w)
 
 " nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
@@ -420,56 +368,3 @@ if filereadable(expand($HOME . '/.vimrc.local'))
     source $HOME/.vimrc.local
 endif
 
-
-" Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 自己添加的设置
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F1> :wq<cr>
-map <F2> :q<cr>
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z 
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
-" Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-
-
-nmap <leader>w :wall!<cr>
-
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-
-
-set mouse=n
-set mouse=i
-" 解决go代码不能跳转问题
-let g:go_def_mode = 'godef'
-""""""""""""""""""""""""""""""
