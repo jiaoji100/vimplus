@@ -317,8 +317,12 @@ imap <silent> <F8> <Plug>StopMarkdownPreview
 
 " vim-easymotion
 let g:EasyMotion_smartcase = 1
-map <leader>w <Plug>(easymotion-bd-w)
+nmap <leader>e <Plug>(easymotion-bd-w)
 nmap <leader>w <Plug>(easymotion-overwin-w)
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
 
 " nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
@@ -367,4 +371,61 @@ nnoremap <leader>gg :GV?<cr>
 if filereadable(expand($HOME . '/.vimrc.local'))
     source $HOME/.vimrc.local
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 自己添加的设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+map <F1> :wq<cr>
+map <F2> :q<cr>
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+
+nmap <leader>w :wall!<cr>
+nmap <leader>i :GoImports<cr>
+
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+
+set mouse=n
+set mouse=i
+" 解决go代码不能跳转问题
+let g:go_def_mode = 'godef'
+" let g:go_def_mode = 'gopls'
+set tags=tags;
+set autochdir
 
