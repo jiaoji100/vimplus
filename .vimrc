@@ -169,9 +169,10 @@ nnoremap <c-l> <c-w>l
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
 " 主题
+let g:molokai_original = 1
+let g:onedark_termcolors=256
 set background=dark
 colorscheme molokai
-let g:onedark_termcolors=256
 
 " airline
 let g:airline_theme="onedark"
@@ -425,7 +426,6 @@ set mouse=n
 set mouse=i
 " 解决go代码不能跳转问题
 let g:go_def_mode = 'godef'
-" let g:go_def_mode = 'gopls'
 set tags=tags;
 set autochdir
 
