@@ -386,7 +386,7 @@ fun! CleanExtraSpaces()
 endfun
 
 map <F1> :wq<cr>
-map <F2> :q<cr>
+map <F2> :q!<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
