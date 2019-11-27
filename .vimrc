@@ -94,7 +94,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'chxuan/cpp-mode'
-Plug 'chxuan/vim-edit'
+" Plug 'chxuan/vim-edit'
 Plug 'chxuan/change-colorscheme'
 Plug 'chxuan/prepare-code'
 Plug 'chxuan/vim-buffer'
@@ -136,6 +136,8 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'https://github.com/fatih/vim-go.git'
 Plug 'https://github.com/fatih/molokai'
 Plug 'dgryski/vim-godef'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
 
 call plug#end()
 
@@ -318,7 +320,7 @@ imap <silent> <F8> <Plug>StopMarkdownPreview
 " vim-easymotion
 let g:EasyMotion_smartcase = 1
 nmap <leader>e <Plug>(easymotion-bd-w)
-nmap <leader>w <Plug>(easymotion-overwin-w)
+map <leader><leader>w <Plug>(easymotion-overwin-w)
 map <Leader><leader>h <Plug>(easymotion-linebackward)
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
@@ -385,7 +387,7 @@ fun! CleanExtraSpaces()
 endfun
 
 map <F1> :wq<cr>
-map <F2> :q<cr>
+map <F2> :q!<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -428,4 +430,9 @@ let g:go_def_mode = 'godef'
 " let g:go_def_mode = 'gopls'
 set tags=tags;
 set autochdir
+let g:ycm_server_python_interpreter = '/usr/local/bin/python'
 
+set expandtab              "tab 替换为4个空格
+set tabstop=4              "设定tab宽度为4个字符
+set shiftwidth=4           "设定自动缩进为4个字符
+retab
