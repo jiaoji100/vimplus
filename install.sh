@@ -9,7 +9,7 @@ function get_platform_type()
 # 获取linux平台类型，ubuntu还是centos
 function get_linux_platform_type()
 {
-    if which apt-get > /dev/null ; then
+    if which apt-get > /dev/null 2&>1 ; then
         echo "ubuntu" # debian ubuntu系列
     elif which yum > /dev/null ; then
         echo "centos" # centos redhat系列
@@ -118,7 +118,7 @@ function init_centos_conf()
 # 安装centos发行版必要软件
 function install_prepare_software_on_centos()
 {
-    sudo yum install -y ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel curl fontconfig ack epel-release clang
+    sudo yum install -y ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel curl fontconfig ack epel-release clang ncurses-libs ncurses-devel
     compile_vim_on_centos
 }
 
