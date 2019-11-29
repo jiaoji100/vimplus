@@ -1,15 +1,19 @@
 # .bashrc
+if [ "xxx$SourceFlag" == "xxx" ]
+then
+    export SourceFlag="true"
+    source ~/.bash_profile 
+fi
+
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
 export EDITOR=/usr/bin/vim
-export PATH=/usr/local/bin:$PATH
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 IP=`ifconfig  eth0|grep inet|grep -v inet6|awk '{print $2}'`
 export PS1='\[\033[01;34m\]\u@$IP\[\033[01;34m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-
 
 alias ll='ls -l'
 alias grep='grep -v grep'
@@ -20,7 +24,6 @@ alias lg='ls |grep $1'
 alias llg='ll |grep $1'
 alias rm='rm -rf'
 alias cp='cp -r'
-alias ppp='node /Users/jiaoji1/tools/blessed-contrib/examples/dashboard.js'
 
 
 eval $(thefuck --alias)  #thefuck 配置
@@ -36,3 +39,6 @@ cdls() {
     fi
 }
 alias cd=cdls
+
+
+
