@@ -9,6 +9,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+export PATH=/usr/local/bin:$PATH
 export EDITOR=/usr/bin/vim
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -24,9 +25,6 @@ alias lg='ls |grep $1'
 alias llg='ll |grep $1'
 alias rm='rm -rf'
 alias cp='cp -r'
-
-
-eval $(thefuck --alias)  #thefuck 配置
 
 cdls() {
     if [ "$1xxx" == "xxx" ]
