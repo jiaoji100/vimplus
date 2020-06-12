@@ -141,6 +141,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'dgryski/vim-godef'
 Plug 'fatih/vim-go'
+Plug 'fatih/molokai'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -341,3 +342,18 @@ if filereadable(expand($HOME . '/.vimrc.custom.config'))
 endif
 
 
+nmap <leader>w :wall!<cr>
+nmap <leader>i :GoImports<cr>
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+" 解决go代码不能跳转问题
+let g:go_def_mode = 'godef'
+set tags=tags;
+set autochdir
+set expandtab              "tab 替换为4个空格
+set tabstop=4              "设定tab宽度为4个字符
+set shiftwidth=4           "设定自动缩进为4个字符
+retab
+
+colorscheme molokai
